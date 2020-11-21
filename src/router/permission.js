@@ -1,5 +1,6 @@
 import router from "./index";
 import store from "@/store";
+// import { getToken } from "@/utils/auth";
 // 获取toaken，用于判断是否登陆，正常token应该在cookies中
 function getToken() {
   return store.state.user.token;

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { setToken } from "@/utils/auth";
 import { mapActions, mapMutations } from "vuex";
 export default {
   methods: {
@@ -16,6 +17,7 @@ export default {
       //暂时先手动设置，token和roles，模拟登陆
       let roles = "guest";
       this.SET_TOKEN("admin");
+      setToken("admin");
       this.SET_ROLES(roles);
       this.generateRoutes(roles);
       this.$router.push({ path: "/index" });
