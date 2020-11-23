@@ -30,6 +30,9 @@ Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.config.productionTip = false;
+if (process.env.VUE_APP_MOCK && process.env.NODE_ENV === "development") {
+  require("../mock/index.js");
+}
 
 new Vue({
   router,
