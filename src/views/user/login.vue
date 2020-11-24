@@ -20,7 +20,7 @@ export default {
       setToken("admin");
       this.SET_ROLES(roles);
       this.generateRoutes(roles);
-      this.$router.push({ path: "/index" });
+      this.$router.push({ path: "/" });
       // .push({ path: this.redirect || '/', query: this.otherQuery })
     }
   }

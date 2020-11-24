@@ -4,30 +4,28 @@
       <template v-if="item.meta.display !== false">
         <el-menu-item
           v-if="!item.hasOwnProperty('children')"
-          :key="item.index"
+          :key="item.path"
           :index="item.path"
         >
           <i class="el-icon-menu"></i>
           <span slot="title">{{ item.name }}</span>
         </el-menu-item>
 
-        <el-submenu v-else :key="item.index" index="item.path">
+        <!-- <el-menu-item
+          v-else-if="item.children.length === 1"
+          :key="item.children[0].path"
+          :index="item.children[0].path"
+        >
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{ item.children[0].name }}</span>
+        </el-menu-item> -->
+
+        <el-submenu v-else :key="item.path" :index="item.path">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span slot="title">{{ item.name }}</span>
           </template>
           <item :routes="item.children" />
-          <!-- <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">{{ item.name }}</span>
-        </template>
-        <el-menu-item
-          v-for="submenu in item.children"
-          :key="submenu.name"
-          :index="submenu.path"
-        >
-          {{ submenu.name }}
-        </el-menu-item> -->
         </el-submenu>
       </template>
     </template>

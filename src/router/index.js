@@ -1,8 +1,53 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Layout from "@/layout";
 Vue.use(VueRouter);
 
 export const constantRoutes = [
+  // {
+  //   path: "/redirect",
+  //   component: Layout,
+  //   meta: {
+  //     display: false
+  //   },
+  //   children: [
+  //     {
+  //       path: "/redirect/:path(.*)",
+  //       component: () => import("@/views/redirect/index")
+  //     }
+  //   ]
+  // },
+  {
+    path: "/first",
+    name: "first",
+    meta: {
+      icon: "",
+      auto: ["admin", "guest"]
+    },
+    component: Layout,
+    children: [
+      {
+        path: "/first/test1",
+        name: "test1",
+        meta: {
+          icon: "",
+          auto: ["admin", "guest"]
+        },
+        component: () =>
+          import(/* webpackChunkName: "test1" */ "../views/test/test1.vue")
+      },
+      {
+        path: "/first/test2",
+        name: "test2",
+        meta: {
+          icon: "",
+          auto: ["admin", "guest"]
+        },
+        component: () =>
+          import(/* webpackChunkName: "test2" */ "../views/test/test2.vue")
+      }
+    ]
+  },
   {
     path: "/login",
     name: "login",
@@ -12,25 +57,30 @@ export const constantRoutes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/user/login.vue")
   },
+
+  // {
+  //   path: "/home",
+  //   name: "Home",
+  //   meta: {
+  //     icon: ""
+  //   },
+  //   component: () => import(/* webpackChunkName: "about" */ "../views/Home.vue")
+  // },
+  // {
+  //   path: "/about",
+  //   name: "About",
+  //   meta: {
+  //     icon: ""
+  //   },
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
+  // },
   {
-    path: "/home",
-    name: "Home",
+    path: "/",
     meta: {
-      icon: ""
+      display: false
     },
-    component: () => import(/* webpackChunkName: "about" */ "../views/Home.vue")
-  },
-  {
-    path: "/about",
-    name: "About",
-    meta: {
-      icon: ""
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    redirect: "/first/test2"
   }
 ];
 
@@ -42,8 +92,9 @@ export const asyncRoutes = [
       icon: "",
       auto: ["admin", "guest"]
     },
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../layout/index.vue"),
+    // component: () =>
+    //   import(/* webpackChunkName: "about" */ "../layout/index.vue"),.
+    component: Layout,
     children: [
       {
         path: "/index/about",
@@ -52,7 +103,8 @@ export const asyncRoutes = [
           icon: "",
           auto: ["admin", "guest"]
         },
-        component: () => import("../views/About.vue")
+        component: () =>
+          import(/* webpackChunkName: "About" */ "../views/About.vue")
       },
       {
         path: "/index/home",
@@ -61,17 +113,19 @@ export const asyncRoutes = [
           icon: "",
           auto: ["admin"]
         },
-        component: () => import("../views/Home.vue")
-      },
-      {
-        path: "/index/home",
-        name: "Home2",
-        meta: {
-          icon: "",
-          auto: ["admin", "guest"]
-        },
-        component: () => import("../views/Home.vue")
+        component: () =>
+          import(/* webpackChunkName: "Home" */ "../views/Home.vue")
       }
+      // {
+      //   path: "/index/home",
+      //   name: "Home2",
+      //   meta: {
+      //     icon: "",
+      //     auto: ["admin", "guest"]
+      //   },
+      //   component: () =>
+      //     import(/* webpackChunkName: "Home" */ "../views/Home.vue")
+      // }
     ]
   }
 ];

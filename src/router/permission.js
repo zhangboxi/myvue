@@ -12,25 +12,31 @@ import { getToken } from "@/utils/auth";
 //3 应该将路由列表和菜单列表放到这边来进行，不应该在 login.vue中
 // 路由列表和菜单列表 这两个判断好重复，关键是对不显示的路由，需要在菜单列表中增加一个判断，如果为隐藏，菜单列表就不显示
 router.beforeEach(async (to, from, next) => {
+  console.log("---------------");
+  console.log(to);
+
   const hasToken = getToken();
   if (hasToken) {
     if (to.path === "/login") {
+      console.log(1);
       next();
     } else {
       if (store.state.user.roles && store.state.user.roles.length > 0) {
+        console.log(2);
         next();
       } else {
+        console.log(3);
         const { roles } = await store.dispatch("user/getInfo", hasToken);
         await store.dispatch("permission/generateRoutes", roles);
-        next("/index");
+        next("/");
       }
     }
-
-    next();
   } else {
     if (to.path === "/login") {
+      console.log(4);
       next();
     } else {
+      console.log(5);
       next("/login");
     }
   }
