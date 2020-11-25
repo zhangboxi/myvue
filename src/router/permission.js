@@ -23,10 +23,12 @@ router.beforeEach(async (to, from, next) => {
     } else {
       if (store.state.user.roles && store.state.user.roles.length > 0) {
         console.log(2);
+        console.log(store.state.user.roles);
         next();
       } else {
         console.log(3);
         const { roles } = await store.dispatch("user/getInfo", hasToken);
+        console.log(roles);
         await store.dispatch("permission/generateRoutes", roles);
         next("/");
       }

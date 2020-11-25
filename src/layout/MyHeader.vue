@@ -1,5 +1,7 @@
 <template>
-  <div>this is my head</div>
+  <div><slot /></div>
 </template>
 
 <script></script>
+
+<style lang="scss" scoped></style>

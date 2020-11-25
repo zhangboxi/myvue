@@ -15,7 +15,8 @@ import {
   Menu,
   Submenu,
   MenuItem,
-  MenuItemGroup
+  MenuItemGroup,
+  Switch
 } from "element-ui";
 Vue.use(Button);
 Vue.use(Select);
@@ -29,6 +30,8 @@ Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
+Vue.use(Switch);
+Vue.use(store);
 Vue.config.productionTip = false;
 if (process.env.VUE_APP_MOCK && process.env.NODE_ENV === "development") {
   require("../mock/index.js");

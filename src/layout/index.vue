@@ -1,35 +1,56 @@
 <template>
   <el-container class="layout-container">
-    <el-aside width="210px"><MyAside :routes="routes"/></el-aside>
+    <el-aside width="250px" v-if="menuleft">
+      <MyAside :routes="routes" />
+    </el-aside>
     <el-container>
-      <el-header height="84px"><MyHeader /></el-header>
-      <el-main><MyMain /></el-main>
+      <el-header height="61px" v-bind:class="{ ishorizontalMenu: !menuleft }">
+        <MyHeader>
+          <div v-if="!menuleft">
+            <horizontalHead :routes="routes" />
+          </div>
+        </MyHeader>
+      </el-header>
+      <el-main v-bind:class="{ ishorizontalMenu: !menuleft }">
+        <MyMain />
+      </el-main>
     </el-container>
-
     <right-panel v-if="showSettings">
-      <div>aaa</div>
+      <setting />
     </right-panel>
   </el-container>
 </template>
 
 <script>
+import horizontalHead from "./components/horizontalHead";
 import MyHeader from "@/layout/MyHeader.vue";
 import MyMain from "@/layout/MyMain.vue";
 import MyAside from "@/layout/MyAside.vue";
 import RightPanel from "@/components/RightPanel";
 import { mapState } from "vuex";
+import setting from "./components/Setting";
 export default {
   name: "Home",
   components: {
     MyHeader,
     MyMain,
     MyAside,
-    RightPanel
+    RightPanel,
+    horizontalHead,
+    setting
   },
   computed: {
-    ...mapState("permission", {
-      routes: state => state.routes
-    })
+    ...mapState({
+      routes: state => state.permission.routes
+    }),
+    menuleft: {
+      get() {
+        return this.$store.state.setting.menuleft;
+      },
+      set() {
+        this.$store.dispatch("setting/changeMenuleft");
+      }
+    }
   },
   data() {
     return {
@@ -37,7 +58,7 @@ export default {
     };
   },
   mounted() {
-    // console.log(JSON.stringify(this.routes));
+    // console.log(this.$store.state.setting.menuleft);
   }
 };
 </script>
@@ -58,7 +79,8 @@ body,
   background-color: #b3c0d1;
   color: #333;
   text-align: center;
-  line-height: 84px;
+  line-height: 61px;
+  padding: 0px;
 }
 
 .el-aside {
@@ -75,5 +97,9 @@ body,
   color: #333;
   text-align: center;
   line-height: 160px;
+}
+.ishorizontalMenu {
+  width: 1670px;
+  margin: 0 auto;
 }
 </style>
