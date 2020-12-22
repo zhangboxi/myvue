@@ -112,16 +112,16 @@ export const asyncRoutes = [
         component: () =>
           import(/* webpackChunkName: "About" */ "../views/About.vue")
       },
-      // {
-      //   path: "/index/home",
-      //   name: "Home1",
-      //   meta: {
-      //     icon: "",
-      //     auto: ["admin"]
-      //   },
-      //   component: () =>
-      //     import(/* webpackChunkName: "Home" */ "../views/Home.vue")
-      // }
+      {
+        path: "/index/home",
+        name: "Home1",
+        meta: {
+          icon: "",
+          auto: ["admin"]
+        },
+        component: () =>
+          import(/* webpackChunkName: "Home" */ "../views/Home.vue")
+      }
       // {
       //   path: "/index/home",
       //   name: "Home2",

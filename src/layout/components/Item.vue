@@ -1,14 +1,13 @@
 <template>
-  <el-menu
+  <!-- <el-menu
     default-active="2"
     class="aside"
-    @open="handleOpen"
-    @close="handleClose"
     :router="isrouter"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
-  >
+  > -->
+  <div>
     <template v-for="item in routes">
       <template v-if="item.meta.display !== false">
         <el-menu-item
@@ -39,7 +38,8 @@
         </el-submenu>
       </template>
     </template>
-  </el-menu>
+     </div>
+  <!-- </el-menu> -->
 </template>
 <script>
 export default {
@@ -50,19 +50,7 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      isrouter: true
-    };
-  },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
+
 };
 </script>
 

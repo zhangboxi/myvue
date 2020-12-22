@@ -1,5 +1,14 @@
 <template>
-  <item :routes="routes" />
+  <el-menu
+    default-active="2"
+    class="aside"
+    :router="isrouter"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
+  >
+    <item :routes="routes" />
+  </el-menu>
 </template>
 
 <script>
@@ -11,6 +20,11 @@ export default {
       type: Array,
       required: true
     }
+  },
+  data() {
+    return {
+      isrouter: true
+    };
   }
 };
 </script>
