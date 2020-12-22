@@ -24,6 +24,7 @@
           v-else-if="item.children.length === 1"
           :key="item.children[0].path"
           :index="item.children[0].path"
+          class="one-el-menu"
         >
           <i class="el-icon-menu"></i>
           <span slot="title">{{ item.children[0].name }}</span>
@@ -72,5 +73,10 @@ export default {
 .el-menu-item {
   width: 200px;
   margin-left: 20px;
+}
+.one-el-menu{
+  margin-left: 0px;
+  margin-right: 20px;
+  width: 250px;
 }
 </style>

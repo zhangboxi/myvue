@@ -1,6 +1,7 @@
 <template>
   <el-container class="layout-container">
     <el-aside width="250px" v-if="menuleft">
+      <div class="title">this is title</div>
       <MyAside :routes="routes" />
     </el-aside>
     <el-container>
@@ -74,6 +75,12 @@ body,
 .layout-container {
   height: 100%;
 }
+.title{
+  height:61px;
+  width: 100%;
+  color: red;
+  line-height: 61px;
+}
 
 .el-header {
   background-color: #b3c0d1;
@@ -84,10 +91,10 @@ body,
 }
 
 .el-aside {
-  background-color: #d3dce6;
   color: #333;
   text-align: center;
   line-height: 200px;
+  background-color: rgb(84, 92, 100);
 
   // height: calc(100% - 100px);
 }

@@ -11,7 +11,6 @@ import { mapActions, mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations("user", ["SET_TOKEN", "SET_ROLES"]),
-    ...mapActions("permission", ["generateRoutes"]),
     ...mapActions("user", ["getInfo"]),
     logintest() {
       console.log("登陆判断，并获取token和roles,并存储到store和cookies中");
