@@ -38,7 +38,7 @@
         </el-submenu>
       </template>
     </template>
-     </div>
+  </div>
   <!-- </el-menu> -->
 </template>
 <script>
@@ -49,8 +49,7 @@ export default {
       type: Array,
       required: true
     }
-  },
-
+  }
 };
 </script>
 
@@ -62,7 +61,7 @@ export default {
   width: 200px;
   margin-left: 20px;
 }
-.one-el-menu{
+.one-el-menu {
   margin-left: 0px;
   margin-right: 20px;
   width: 250px;
