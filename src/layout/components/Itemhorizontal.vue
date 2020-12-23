@@ -1,6 +1,5 @@
 <template>
   <el-menu
-    class="el-menu-demo"
     mode="horizontal"
     @select="handleSelect"
     background-color="#545c64"
@@ -14,8 +13,8 @@
           v-if="!item.hasOwnProperty('children')"
           :key="item.path"
           :index="item.path"
-          >{{ item.name }}</el-menu-item
-        >
+          >{{ item.name }}
+        </el-menu-item>
 
         <el-menu-item
           v-else-if="item.children.length === 1"
@@ -61,5 +60,8 @@ export default {
 .el-menu--horizontal .el-menu .el-menu-item {
   height: 50px;
   line-height: 50px;
+}
+.el-menu.el-menu--horizontal {
+  border-bottom: solid 0px #e6e6e6;
 }
 </style>
