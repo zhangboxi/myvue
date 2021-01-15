@@ -1,6 +1,25 @@
 <template>
-  <div>this is about!! gittest</div>
+  <div>
+    this is about!! gittest
+    <div id="mount-point"></div>
+  </div>
 </template>
+<script>
+import Vue from "vue";
+import ext from "./exnteds.vue";
+let extConstructor = Vue.extend(ext);
+export default {
+  mounted() {
+    let options = {
+      firstName: "山"
+    };
+    console.log("进行加载");
+    new extConstructor({
+      data: options
+    }).$mount("#mount-point");
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .el-header,
